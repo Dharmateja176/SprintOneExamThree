@@ -101,15 +101,16 @@ public class School {
         int option = sc.nextInt();
         sc.nextLine();
         switch (option){
-            case 1 -> {
+            case 1 :{
                 String name = sc.nextLine();
                 int year = sc.nextInt();
                 sc.nextLine();
                 String department = sc.nextLine();
                 double percentage = sc.nextDouble();
                 person = new Student(name,year,department,percentage);
+                break;
             }
-            case 2 -> {
+            case 2 : {
                 String name = sc.nextLine();
                 int year = sc.nextInt();
                 sc.nextLine();
@@ -118,9 +119,10 @@ public class School {
                 sc.nextLine();
                 double salary = sc.nextDouble();
                 person = new TeachingStaff(name,year,salary,subject,resultPercentage);
+                break;
 
             }
-            case 3 ->{
+            case 3 : {
                 String name = sc.nextLine();
                 int year = sc.nextInt();
                 sc.nextLine();
@@ -129,8 +131,9 @@ public class School {
                 sc.nextLine();
                 double salary = sc.nextInt();
                 person = new NonTeachingStaff(name,year,salary,lab,experience);
+                break;
             }
-            default -> System.out.println("Invalid Input");
+            default : System.out.println("Invalid Input");
         }
         if(option <=3 && option >= 1)
             System.out.println(person);

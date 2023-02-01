@@ -1,5 +1,4 @@
 import java.text.DecimalFormat;
-import java.util.Objects;
 import java.util.Scanner;
 
 class VISACard {
@@ -45,11 +44,15 @@ public class MayorAndFair {
         String type = sc.nextLine();
         int option = sc.nextInt();
         switch (option) {
-            case 1 ->
-                System.out.println(sdf.format(new VISACard(holderName,ccv).computeRewardPoints(type,amount)));
-            case 2 ->
-                System.out.println(sdf.format(new HPVISACard(holderName,ccv).computeRewardPoints(type,amount)));
-            default -> System.out.println("Invalid Choice");
+            case 1 : {
+                System.out.println(sdf.format(new VISACard(holderName, ccv).computeRewardPoints(type, amount)));
+                break;
+            }
+            case 2 : {
+                System.out.println(sdf.format(new HPVISACard(holderName, ccv).computeRewardPoints(type, amount)));
+                break;
+            }
+            default : System.out.println("Invalid Choice");
         }
     }
 }

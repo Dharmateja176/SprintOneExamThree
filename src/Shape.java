@@ -3,9 +3,7 @@ import java.util.Scanner;
 
 class Shape {
     protected double area;
-    protected Scanner sc = new Scanner(System.in);
-    protected DecimalFormat df = new DecimalFormat("0.00");
-
+    DecimalFormat df = new DecimalFormat("0.00");
     public void computeArea() {
         area = 0;
     }
@@ -14,8 +12,8 @@ class Shape {
 class Circle extends Shape {
     private final double radius;
 
-    Circle() {
-        radius = sc.nextDouble();
+    public Circle(double radius) {
+        this.radius = radius;
     }
 
     @Override
@@ -29,9 +27,9 @@ class Rectangle extends Shape {
     private final double length;
     private final double breadth;
 
-    Rectangle() {
-        length = sc.nextDouble();
-        breadth = sc.nextDouble();
+    Rectangle(double length, double breadth) {
+        this.length = length;
+        this.breadth = breadth;
     }
 
     @Override
@@ -45,9 +43,9 @@ class Triangle extends Shape {
     private final double base;
     private final double height;
 
-    Triangle() {
-        base = sc.nextDouble();
-        height = sc.nextDouble();
+    Triangle(double base, double height) {
+        this.base = base;
+        this.height = height;
     }
 
     @Override
@@ -64,10 +62,20 @@ class AreaCalculator {
         Scanner sc = new Scanner(System.in);
         int option = sc.nextInt();
         switch (option) {
-            case 1 -> shape = new Circle();
-            case 2 -> shape = new Rectangle();
-            case 3 -> shape = new Triangle();
-            default -> System.out.println("Invalid Input");
+            case 1: {
+                shape = new Circle(sc.nextDouble());
+                break;
+            }
+            case 2: {
+                shape = new Rectangle(sc.nextDouble(), sc.nextDouble());
+                break;
+            }
+            case 3: {
+                shape = new Triangle(sc.nextDouble(), sc.nextDouble());
+                break;
+            }
+            default:
+                System.out.println("Invalid Input");
         }
         if (option <= 3 && option >= 1)
             shape.computeArea();

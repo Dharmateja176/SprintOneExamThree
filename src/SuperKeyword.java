@@ -4,13 +4,15 @@ import java.util.Scanner;
 class Event{
     protected String name,detail,type,organiserName;
 
+    public Event() {
+    }
+
     public Event(String name, String detail, String type, String organiserName) {
         this.name = name;
         this.detail = detail;
         this.type = type;
         this.organiserName = organiserName;
     }
-
     @Override
     public String toString() {
         return name+" "+detail+" "+type+" "+organiserName;
@@ -19,10 +21,12 @@ class Event{
 class Exhibition extends Event{
     private int noOfStalls;
 
-
-    public Exhibition(String name, String detail, String type, String organiserName,int noOfStalls) {
+    public Exhibition() {
+        super();
+    }
+    public Exhibition(String name, String detail, String type, String organiserName, int number) {
         super(name, detail, type, organiserName);
-        this.noOfStalls = noOfStalls;
+        this.noOfStalls = number;
     }
 
     @Override
@@ -32,6 +36,8 @@ class Exhibition extends Event{
 }
 class StageEvent extends Event{
     private int noOfSeats;
+
+    public StageEvent(){}
 
     public StageEvent(String name, String detail, String type, String organiserName, int noOfSeats) {
         super(name, detail, type, organiserName);

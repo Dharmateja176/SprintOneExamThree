@@ -70,17 +70,20 @@ public class GSTCalculation {
         long timeDiff = Math.abs(endDate.getTime() - startDate.getTime());
         long daysDiff = TimeUnit.DAYS.convert(timeDiff, TimeUnit.MILLISECONDS);
         switch (option) {
-            case 1 -> {
+            case 1: {
                 GSTExhibition event = new GSTExhibition(name, detail, type, ownerName, costPerDay, number);
                 double total_cost = costPerDay * daysDiff;
                 System.out.println(total_cost * event.getRate());
+                break;
             }
-            case 2 -> {
+            case 2: {
                 GSTStageEvent event = new GSTStageEvent(name, detail, type, ownerName, costPerDay, number);
                 double total_cost = costPerDay * daysDiff;
                 System.out.println(total_cost * event.getRate());
+                break;
             }
-            default -> System.out.println("Invalid input");
+            default:
+                System.out.println("Invalid input");
         }
     }
 }

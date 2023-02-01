@@ -1,6 +1,5 @@
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Scanner;
@@ -10,21 +9,20 @@ abstract class Account {
     int number;
     int balance;
     Date startDate;
+    Calendar calendar = Calendar.getInstance();
 
     public abstract double calculateInterest(Date dueDate);
 
 }
 
 class CurrentAccount extends Account {
-
     @Override
     public double calculateInterest(Date dueDate) {
         double roi = 0.12d;
-        Calendar calandar = Calendar.getInstance();
-        calandar.setTime(startDate);
-        int startYear = calandar.get(Calendar.YEAR);
-        calandar.setTime(dueDate);
-        int endYear = calandar.get(Calendar.YEAR);
+        calendar.setTime(startDate);
+        int startYear = calendar.get(Calendar.YEAR);
+        calendar.setTime(dueDate);
+        int endYear = calendar.get(Calendar.YEAR);
         System.out.println(startYear+" "+endYear);
         long diff = endYear - startYear;
         System.out.println(diff);
@@ -33,16 +31,13 @@ class CurrentAccount extends Account {
 }
 
 class SavingsAccount extends Account {
-
     @Override
     public double calculateInterest(Date dueDate) {
         double roi = 0.05d;
-
-        Calendar calandar = Calendar.getInstance();
-        calandar.setTime(startDate);
-        int startYear = calandar.get(Calendar.YEAR);
-        calandar.setTime(dueDate);
-        int endYear = calandar.get(Calendar.YEAR);
+        calendar.setTime(startDate);
+        int startYear = calendar.get(Calendar.YEAR);
+        calendar.setTime(dueDate);
+        int endYear = calendar.get(Calendar.YEAR);
         System.out.println(startYear+" "+endYear);
         long diff = endYear - startYear;
         System.out.println(diff);
