@@ -10,7 +10,7 @@ class VISACard {
         this.ccv = ccv;
     }
 
-    public double computeRewardPoints(String purchaseType, double amount) {
+    public Double computeRewardPoints(String purchaseType, Double amount) {
         double rewardPoints;
         double rate = 0.01;
         rewardPoints = amount*rate;
@@ -24,7 +24,7 @@ class HPVISACard extends VISACard {
     }
 
     @Override
-    public double computeRewardPoints(String purchaseType, double amount) {
+    public Double computeRewardPoints(String purchaseType, Double amount) {
         double rewardPoints = super.computeRewardPoints(purchaseType, amount);
         if(purchaseType.equals("fuel"))
             return rewardPoints + 10.0;

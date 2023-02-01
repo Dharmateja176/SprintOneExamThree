@@ -30,7 +30,7 @@ class GSTExhibition extends GSTEvent {
         this.noOfStall = noOfStall;
     }
 
-    public double getRate() {
+    public Double getRate() {
         return rate;
     }
 }
@@ -46,7 +46,7 @@ class GSTStageEvent extends GSTEvent {
         this.noOfSeats = noOfSeats;
     }
 
-    public double getRate() {
+    public Double getRate() {
         return rate;
     }
 }
