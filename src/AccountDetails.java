@@ -1,9 +1,9 @@
 //Question 7
 import java.util.Scanner;
 
-//Name this class as Account
+//Name this class as Account.Account
 //will be
-// class Account {
+// class Account.Account {
 class AccountBase {
     protected String accountNumber;
     protected double balance;
@@ -18,7 +18,7 @@ class AccountBase {
 
 //Change AccountBase name accordingly to that you used in above baseClass
 //will be
-//class SavingAccount extends Account {
+//class SavingAccount extends Account.Account {
 class SavingAccount extends AccountBase {
     protected double minimumBalance;
 
@@ -30,7 +30,7 @@ class SavingAccount extends AccountBase {
 
 //Change AccountBase name accordingly to that you used in above baseClass
 //will be
-//class FixedAccount extends Account {
+//class FixedAccount extends Account.Account {
 class FixedAccount extends SavingAccount {
     private int lockingPeriod;
 
@@ -47,7 +47,7 @@ class FixedAccount extends SavingAccount {
 class AccountBO{
     public  AccountBO(String detail){
         String[] array = detail.split(",");
-        System.out.format("%-20s %-10s %-20s %-20s %s\n","Account Number","Balance","Account holder name","Minimum balance","Locking period");
+        System.out.format("%-20s %-10s %-20s %-20s %s\n","Account.Account Number","Balance","Account.Account holder name","Minimum balance","Locking period");
         FixedAccount fa = new FixedAccount(
                 array[0],
                 Double.parseDouble(array[1]),

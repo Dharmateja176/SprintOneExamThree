@@ -5,6 +5,8 @@ import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
 //Name this class as Event
+// will be
+//class Event {
 class GSTEvent {
     String name, detail, type, ownerName;
     double costPerDay;
@@ -18,7 +20,9 @@ class GSTEvent {
     }
 }
 
-//Name this class as Exhibition
+//Name this class as Exhibition and Super class is Event
+// will be
+// class Exhibition extends Event {
 class GSTExhibition extends GSTEvent {
 
     int noOfStall;
@@ -36,6 +40,8 @@ class GSTExhibition extends GSTEvent {
 }
 
 //Name this class as StageEvent
+// will be
+// class Exhibition extends Event {
 class GSTStageEvent extends GSTEvent {
     int noOfSeats;
     final double rate = 0.15;
