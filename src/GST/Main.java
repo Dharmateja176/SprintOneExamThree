@@ -1,17 +1,17 @@
+package GST;
+//ignore package
+//start from here
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
-//Name this class as Event
-// will be
-//class Event {
-class GSTEvent {
+class Event {
     String name, detail, type, ownerName;
     double costPerDay;
 
-    public GSTEvent(String name, String detail, String type, String ownerName, double costPerDay) {
+    public Event(String name, String detail, String type, String ownerName, double costPerDay) {
         this.name = name;
         this.detail = detail;
         this.type = type;
@@ -19,17 +19,12 @@ class GSTEvent {
         this.costPerDay = costPerDay;
     }
 }
-
-//Name this class as Exhibition and Super class is Event
-// will be
-// class Exhibition extends Event {
-class GSTExhibition extends GSTEvent {
+class Exhibition extends Event {
 
     int noOfStall;
     final double rate = 0.05;
 
-    //   Name it as Exhibtion not GSTExhibition
-    public GSTExhibition(String name, String detail, String type, String ownerName, double costPerDay, int noOfStall) {
+    public Exhibition(String name, String detail, String type, String ownerName, double costPerDay, int noOfStall) {
         super(name, detail, type, ownerName, costPerDay);
         this.noOfStall = noOfStall;
     }
@@ -38,16 +33,11 @@ class GSTExhibition extends GSTEvent {
         return rate;
     }
 }
-
-//Name this class as StageEvent
-// will be
-// class Exhibition extends Event {
-class GSTStageEvent extends GSTEvent {
+class StageEvent extends Event {
     int noOfSeats;
     final double rate = 0.15;
 
-    //   Name it as StageEvent not GSTStageEvent
-    public GSTStageEvent(String name, String detail, String type, String ownerName, double costPerDay, int noOfSeats) {
+    public StageEvent(String name, String detail, String type, String ownerName, double costPerDay, int noOfSeats) {
         super(name, detail, type, ownerName, costPerDay);
         this.noOfSeats = noOfSeats;
     }
@@ -57,7 +47,7 @@ class GSTStageEvent extends GSTEvent {
     }
 }
 
-public class GSTCalculation {
+public class Main {
     public static void main(String[] args) throws ParseException {
         Scanner sc = new Scanner(System.in);
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
@@ -77,13 +67,13 @@ public class GSTCalculation {
         long daysDiff = TimeUnit.DAYS.convert(timeDiff, TimeUnit.MILLISECONDS);
         switch (option) {
             case 1: {
-                GSTExhibition event = new GSTExhibition(name, detail, type, ownerName, costPerDay, number);
+                Exhibition event = new Exhibition(name, detail, type, ownerName, costPerDay, number);
                 double total_cost = costPerDay * daysDiff;
                 System.out.println(total_cost * event.getRate());
                 break;
             }
             case 2: {
-                GSTStageEvent event = new GSTStageEvent(name, detail, type, ownerName, costPerDay, number);
+                StageEvent event = new StageEvent(name, detail, type, ownerName, costPerDay, number);
                 double total_cost = costPerDay * daysDiff;
                 System.out.println(total_cost * event.getRate());
                 break;

@@ -1,3 +1,5 @@
+package Animal;
+
 //Header
 public class Animal {
     void Print(){

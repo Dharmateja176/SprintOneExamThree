@@ -1,25 +1,21 @@
+package AccountDetails;
 //Question 7
+//Ignore Package
+//Start from here
 import java.util.Scanner;
 
-//Name this class as Account.Account
-//will be
-// class Account.Account {
-class AccountBase {
+class Account {
     protected String accountNumber;
     protected double balance;
     protected String accountHolderName;
 
-    public AccountBase(String accountNumber, double balance, String accountHolderName) {
+    public Account(String accountNumber, double balance, String accountHolderName) {
         this.accountNumber = accountNumber;
         this.balance = balance;
         this.accountHolderName = accountHolderName;
     }
 }
-
-//Change AccountBase name accordingly to that you used in above baseClass
-//will be
-//class SavingAccount extends Account.Account {
-class SavingAccount extends AccountBase {
+class SavingAccount extends Account {
     protected double minimumBalance;
 
     public SavingAccount(String accountNumber, double balance, String accountHolderName, double minimumBalance) {
@@ -27,10 +23,6 @@ class SavingAccount extends AccountBase {
         this.minimumBalance = minimumBalance;
     }
 }
-
-//Change AccountBase name accordingly to that you used in above baseClass
-//will be
-//class FixedAccount extends Account.Account {
 class FixedAccount extends SavingAccount {
     private int lockingPeriod;
 
@@ -59,10 +51,8 @@ class AccountBO{
                 fa.accountNumber,fa.balance,fa.accountHolderName,fa.minimumBalance,fa.getLockingPeriod());
     }
 }
-//Name this class as Main
-//will be
-//public class Main
-public class AccountDetails {
+
+public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         String detail = sc.nextLine();
