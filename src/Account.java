@@ -11,26 +11,43 @@ abstract class Account {
     Date startDate;
     Calendar calendar = Calendar.getInstance();
 
+    public Account(String name, int number, int balance, Date startDate) {
+        this.name = name;
+        this.number = number;
+        this.balance = balance;
+        this.startDate = startDate;
+    }
+
     public abstract double calculateInterest(Date dueDate);
 
 }
 
 class CurrentAccount extends Account {
+    public CurrentAccount(String name, int number, int balance, Date startDate) {
+        super(name, number, balance, startDate);
+    }
+
     @Override
     public double calculateInterest(Date dueDate) {
         double roi = 0.12d;
+
         calendar.setTime(startDate);
         int startYear = calendar.get(Calendar.YEAR);
+
         calendar.setTime(dueDate);
         int endYear = calendar.get(Calendar.YEAR);
-        System.out.println(startYear+" "+endYear);
+
         long diff = endYear - startYear;
-        System.out.println(diff);
+
         return (balance * diff * roi);
     }
 }
 
 class SavingsAccount extends Account {
+    public SavingsAccount(String name, int number, int balance, Date startDate) {
+        super(name, number, balance, startDate);
+    }
+
     @Override
     public double calculateInterest(Date dueDate) {
         double roi = 0.05d;
@@ -38,10 +55,11 @@ class SavingsAccount extends Account {
         int startYear = calendar.get(Calendar.YEAR);
         calendar.setTime(dueDate);
         int endYear = calendar.get(Calendar.YEAR);
-        System.out.println(startYear+" "+endYear);
         long diff = endYear - startYear;
-        System.out.println(diff);
         return (balance * diff * roi);
+    }
+    public void greet(){
+
     }
 }
 
@@ -55,18 +73,13 @@ class CalculateInterest {
         sc.nextLine();
         String name = sc.nextLine();
         int number = sc.nextInt();
-        sc.nextLine();
         int amount = sc.nextInt();
         sc.nextLine();
         String startDate = sc.nextLine();
         String endDate = sc.nextLine();
 
-        if (type == 1) a = new CurrentAccount();
-        else a = new SavingsAccount();
-        a.name = name;
-        a.number = number;
-        a.balance = amount;
-        a.startDate = sdf.parse(startDate);
+        if (type == 1) a = new CurrentAccount(name, number, amount, sdf.parse(startDate));
+        else a = new SavingsAccount(name, number, amount, sdf.parse(startDate));
         System.out.println(a.calculateInterest(sdf.parse(endDate)));
     }
 }
