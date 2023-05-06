@@ -1,3 +1,6 @@
+package Question_4;
+// ignore package name
+//start from here
 import java.util.Scanner;
 
 //Question 4
@@ -36,9 +39,7 @@ class Exhibition extends Event{
 }
 class StageEvent extends Event{
     private int noOfSeats;
-
     public StageEvent(){}
-
     public StageEvent(String name, String detail, String type, String organiserName, int noOfSeats) {
         super(name, detail, type, organiserName);
         this.noOfSeats = noOfSeats;
@@ -49,9 +50,9 @@ class StageEvent extends Event{
     }
 }
 
-//Name this class as Main
-public class SuperKeyword {
+public class Main {
     public static void main(String[] args) {
+        Event event = null;
         Scanner sc = new Scanner(System.in);
         int option = sc.nextInt();
         sc.nextLine();
@@ -62,13 +63,14 @@ public class SuperKeyword {
         String type = array[2];
         String organiserName = array[3];
         int number = Integer.parseInt(array[4]);
-        Event event = null;
-        switch (option){
-            case 1-> event = new StageEvent(name, detail,type,organiserName,number);
-            case 2 -> event = new Exhibition(name, detail,type,organiserName,number);
-            default -> System.out.println("Invalid input");
+        if (option == 1) {
+            event = new StageEvent(name, detail, type, organiserName, number);
+        } else if (option == 2) {
+            event = new Exhibition(name, detail, type, organiserName, number);
+        } else {
+            System.out.println("Invalid input");
         }
-        if(option == 1 || option == 2)
+        if(event != null)
             System.out.println(event);
     }
 }

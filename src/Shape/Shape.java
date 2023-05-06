@@ -1,3 +1,6 @@
+package Shape;
+//ignore package
+//start from here
 import java.text.DecimalFormat;
 import java.util.Scanner;
 
@@ -55,8 +58,8 @@ class Triangle extends Shape {
     }
 }
 
-//  Name the AreaCalculator as Main
-class AreaCalculator {
+//  Name the Shape.AreaCalculator as Main
+class Main {
     public static void main(String[] args) {
         Shape shape = null;
         Scanner sc = new Scanner(System.in);
@@ -77,7 +80,7 @@ class AreaCalculator {
             default:
                 System.out.println("Invalid Input");
         }
-        if (option <= 3 && option >= 1)
+        if (shape != null)
             shape.computeArea();
     }
 }
