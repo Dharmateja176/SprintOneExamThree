@@ -1,3 +1,7 @@
+package Mayor;
+//ignore package
+//start from here
+
 import java.text.DecimalFormat;
 import java.util.Scanner;
 
@@ -13,27 +17,27 @@ class VISACard {
     public Double computeRewardPoints(String purchaseType, Double amount) {
         double rewardPoints;
         double rate = 0.01;
-        rewardPoints = amount*rate;
+        rewardPoints = amount * rate;
         return rewardPoints;
     }
 }
 
 class HPVISACard extends VISACard {
     public HPVISACard(String holderName, String ccv) {
-        super(holderName,ccv);
+
+        super(holderName, ccv);
     }
 
     @Override
     public Double computeRewardPoints(String purchaseType, Double amount) {
         double rewardPoints = super.computeRewardPoints(purchaseType, amount);
-        if(purchaseType.equals("fuel"))
+        if (purchaseType.equals("fuel"))
             return rewardPoints + 10.0;
         return rewardPoints;
     }
 }
 
-//Name this class as Main
-public class MayorAndFair {
+public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         DecimalFormat sdf = new DecimalFormat("0.0");
@@ -43,16 +47,12 @@ public class MayorAndFair {
         sc.nextLine();
         String type = sc.nextLine();
         int option = sc.nextInt();
-        switch (option) {
-            case 1 : {
-                System.out.println(sdf.format(new VISACard(holderName, ccv).computeRewardPoints(type, amount)));
-                break;
-            }
-            case 2 : {
-                System.out.println(sdf.format(new HPVISACard(holderName, ccv).computeRewardPoints(type, amount)));
-                break;
-            }
-            default : System.out.println("Invalid Choice");
-        }
+        if (option == 1)
+            System.out.println(sdf.format(new VISACard(holderName, ccv).computeRewardPoints(type, amount)));
+        else if (option == 2)
+            System.out.println(sdf.format(new HPVISACard(holderName, ccv).computeRewardPoints(type, amount)));
+        else
+            System.out.println("Invalid Choice");
     }
 }
+

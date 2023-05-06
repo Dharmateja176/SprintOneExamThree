@@ -18,6 +18,9 @@ class Event {
         this.ownerName = ownerName;
         this.costPerDay = costPerDay;
     }
+    public Double getRate(){
+        return 0.00;
+    }
 }
 class Exhibition extends Event {
 
@@ -49,6 +52,7 @@ class StageEvent extends Event {
 
 public class Main {
     public static void main(String[] args) throws ParseException {
+        Event event;
         Scanner sc = new Scanner(System.in);
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         int option = sc.nextInt();
@@ -65,21 +69,15 @@ public class Main {
         Date endDate = sdf.parse(sc.nextLine());
         long timeDiff = Math.abs(endDate.getTime() - startDate.getTime());
         long daysDiff = TimeUnit.DAYS.convert(timeDiff, TimeUnit.MILLISECONDS);
-        switch (option) {
-            case 1: {
-                Exhibition event = new Exhibition(name, detail, type, ownerName, costPerDay, number);
-                double total_cost = costPerDay * daysDiff;
-                System.out.println(total_cost * event.getRate());
-                break;
-            }
-            case 2: {
-                StageEvent event = new StageEvent(name, detail, type, ownerName, costPerDay, number);
-                double total_cost = costPerDay * daysDiff;
-                System.out.println(total_cost * event.getRate());
-                break;
-            }
-            default:
-                System.out.println("Invalid input");
-        }
+        if (option == 1) {
+            event = new Exhibition(name, detail, type, ownerName, costPerDay, number);
+            double total_cost = costPerDay * daysDiff;
+            System.out.println(total_cost * event.getRate());
+        } else if (option == 2) {
+            event = new StageEvent(name, detail, type, ownerName, costPerDay, number);
+            double total_cost = costPerDay * daysDiff;
+            System.out.println(total_cost * event.getRate());
+        } else
+            System.out.println("Invalid input");
     }
 }
